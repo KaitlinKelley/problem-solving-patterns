@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem Solving Example</title>
+</head>
+<body>
+
+<script>
+
+    //1. Understand the Problem
+
+    //EX: Write a function which takes in a string and returns counts of each character in the string.
+
+    /*
+    Restate: take a string, count the number of times each character appears in the string
+    Inputs: a string (a sentence? one word? etc) --> no special characters, account for all alphanumerics, could be a sentence...label as str
+    Output: an object with key/value pairs as char:count ...label charCount
+
+    */
+
+
+
+
+
+    //2. Explore Concrete Examples
+
+    //EX: Write a function which takes in a string and returns counts of each alphanumeric character in the string.
+
+    /*
+
+    simple: countChars("aaaa") => {a:4}
+             OR
+            countChars("aaaA") => {a:3, A:4}
+            Or
+            countChars("") =>
+            countChars(false) =>
+            countChars("3teen") =>
+
+    complex: countChars("hello hey!") => {stuff goes here}
+
+    */
+
+
+
+    //3. Break it Down
+
+    //EX: Write a function which takes in a string and returns counts of each alphanumeric character in the string.
+
+    // function countChars(str){
+    //     //make bucket obj
+    //     //loop through string to get chars
+    //     //check if char is alphanumeric...if it is, put it in the bucket
+    //     //return bucket obj
+    // }
+
+    /*
+
+	*/
+
+
+
+    //4. Solve || Simplify
+
+    //EX: Write a function which takes in a string and returns counts of each alphanumeric character in the string.
+
+    function countChars(str){
+        let charCount = {};
+
+        for (let char of str) {
+            char = char.toLowerCase();
+
+            if (/[a-z0-9]/.test(char)) {
+                if (!charCount[char]) {
+                    charCount[char] = 1;
+                } else {
+                    charCount[char]++;
+                }
+
+            }
+        }
+
+        return charCount;
+    }
+
+    console.log(countChars("hello!"));
+
+
+
+    //5. Look Back and Refactor
+
+    //EX: Write a function which takes in a string and returns counts of each alphanumeric character in the string.
+
+    function isAlphanumeric(char){
+        let code = char.charCodeAt(0);
+        if(!(code > 47 && code < 58) &&
+            !(code > 64 && code < 91) &&
+            !(code > 96 && code < 123)){
+
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function countCharsBetter(str){
+        let charCounts = {};
+        for (let char of str){
+            if(isAlphanumeric(char)){
+                char = char.toLowerCase();
+                charCounts[char] = ++charCounts[char] || 1;
+            }
+        }
+        return charCounts;
+    }
+
+    console.log(countCharsBetter("hello all!"));
+
+
+
+</script>
+</body>
+</html>
