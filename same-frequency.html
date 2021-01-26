@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // Write a function called sameFrequency. Given two positive integerts, find out if the two numbers have the same frequency of digits.
+    // sameFrequency(182, 281) =  true
+    // sameFrequency(34, 14) =  false
+
+    //check lengths before proceeding
+    //convert nums to string
+    //create two objects
+    //loop through numStrings and add to objs (digit: frequency of digit)
+    //loop through obj and see if key(digit) exists
+
+    function sameFrequency(int1, int2){
+        let string1 = int1.toString();
+        let string2 = int2.toString();
+
+        if(string1.length !== string2.length){
+            return false;
+        }
+
+        let freqCount1 = {};
+        let freqCount2 = {};
+
+        for(let digit of string1){
+            freqCount1[digit] = (freqCount1[digit] || 0) + 1; //both of these for loops accomplish the same thing
+        }
+
+        for(let digit of string2){
+            if(!freqCount2[digit]){
+                freqCount2[digit] = 1;
+            }else{
+                freqCount2[digit]++;
+            }
+        }
+
+        console.log(freqCount1);
+        console.log(freqCount2);
+
+        for(let key in freqCount1){ //{digit:frequency} ==> {key:value}
+            if(freqCount1[key] !== freqCount2[key]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    console.log(sameFrequency(182, 281));
+    console.log(sameFrequency(182, 11882));
+    console.log(sameFrequency(1234, 2345));
+
+
+</script>
+
+</body>
+</html>
