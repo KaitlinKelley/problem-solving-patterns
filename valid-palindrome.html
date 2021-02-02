@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Valid Palindrome</title>
+</head>
+<body>
+<script>
+	//Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+    //Note: For the purpose of this problem, we define empty string as valid palindrome.
+	//isPalindrome("A man, a plan, a canal: Panama") //true
+	//isPalindrome("race a car") //false
+	//isPalindrome("tAco Cat") //true
+
+	//Redefine the question in our own words
+	//Ask clarifying questions
+	//Come up with test cases and solutions
+	//Pseudocode
+
+	//account for empty string
+	//remove non-alphanumeric chars (regex maybe?)
+	//lowercase all characters
+	//save sanitized string to use
+
+	function isPalindrome(str){
+
+		if(str.length === 0){
+			return true;
+		}
+
+		let newString = str.toLowerCase().match(/[a-z]/gi).join("");
+		let left = 0;
+		let right = newString.length - 1;
+
+		while (left < right){
+			if(newString[left] !== newString[right]){
+				return false;
+			}
+			left++;
+			right--;
+		}
+
+		return true;
+
+	}
+
+	console.log(isPalindrome("A man, a plan, a canal: Panama")); //true
+	console.log(isPalindrome("race a car")); //false
+	console.log(isPalindrome("tAco Cat")); //true
+	console.log(isPalindrome("racecar")); //true
+
+	//Time Complexity: O(n), linear   (Regex is linear)
+	//Space Complexity: O(n), linear  (Storing a string in variable)
+
+
+
+
+
+</script>
+</body>
+</html>
